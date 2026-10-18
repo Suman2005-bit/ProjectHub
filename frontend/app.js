@@ -31,12 +31,26 @@ async function loadProjects() {
 }
 
 function updateCategories() {
-  const selected = category.value;
+  const selectedCategory = category.value;
+  const selectedTechnology =
+    document.getElementById("technologyFilter").value;
+
   const categories = [
     ...new Set(projects.map(p => p.category).filter(Boolean))
-  ];
+  ].sort();
+
+  const technologies = [
+    ...new Set(
+      projects.flatMap(p => p.technologies || [])
+        .filter(Boolean)
+        .map(t => t.trim())
+    )
+  ].sort();
 
   category.innerHTML = '<option value="all">All categories</option>';
+  technologies.forEach(name => {
+    // Technology options are populated separately below.
+  });
 
   categories.forEach(name => {
     const option = document.createElement("option");
@@ -45,15 +59,33 @@ function updateCategories() {
     category.appendChild(option);
   });
 
-  category.value = categories.includes(selected) ? selected : "all";
+  const technologyFilter = document.getElementById("technologyFilter");
+  technologyFilter.innerHTML =
+    '<option value="all">All technologies</option>';
+
+  technologies.forEach(name => {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    technologyFilter.appendChild(option);
+  });
+
+  category.value = categories.includes(selectedCategory)
+    ? selectedCategory
+    : "all";
+
+  technologyFilter.value = technologies.includes(selectedTechnology)
+    ? selectedTechnology
+    : "all";
 }
 
 function renderProjects() {
   
 const query = search.value.toLowerCase().trim();
 const selectedCategory = category.value;
+const selectedTechnology =
+  document.getElementById("technologyFilter").value;
 const sortBy = document.getElementById("sortBy").value;
-
 
   const filtered = projects.filter(project => {
     const searchable = [
@@ -63,9 +95,13 @@ const sortBy = document.getElementById("sortBy").value;
       ...(project.technologies || [])
     ].join(" ").toLowerCase();
 
-    return searchable.includes(query) &&
-      (selectedCategory === "all" ||
-        project.category === selectedCategory);
+   return searchable.includes(query) &&
+  (selectedCategory === "all" ||
+    project.category === selectedCategory) &&
+  (selectedTechnology === "all" ||
+    (project.technologies || []).some(
+      tech => String(tech).trim() === selectedTechnology
+    ));
   });
   
 filtered.sort((a, b) => {
@@ -160,6 +196,8 @@ search.addEventListener("input", renderProjects);
 category.addEventListener("change", renderProjects);
 document.getElementById("sortBy")
   .addEventListener("change", renderProjects);
+  document.getElementById("technologyFilter")
+  .addEventListener("change", renderProjects);
 
 document.getElementById("openForm").addEventListener("click", () => {
   form.classList.remove("hidden");
@@ -225,6 +263,7 @@ document.getElementById("refreshProjects")
 document.getElementById("clearFilters").addEventListener("click", () => {
   search.value = "";
   category.value = "all";
+  document.getElementById("technologyFilter").value = "all";
   renderProjects();
 });
 
