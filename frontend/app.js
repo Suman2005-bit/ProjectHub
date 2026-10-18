@@ -1,5 +1,7 @@
 
-const API_URL = "http://localhost:5000/api/projects";
+const API_BASE_URL = window.PROJECTHUB_API_URL || "http://localhost:5000";
+
+const API_URL = `${API_BASE_URL}/api/projects`;
 
 const grid = document.getElementById("projectGrid");
 const search = document.getElementById("search");
@@ -617,7 +619,7 @@ editProfileForm?.addEventListener("submit", async (event) => {
     profileFormMessage.textContent = "Saving profile...";
 
     const response = await fetch(
-      `http://localhost:5000/api/profiles/${encodeURIComponent(name)}`,
+  `${API_BASE_URL}/api/profiles/${encodeURIComponent(name)}`,
       {
         method: "PUT",
         headers: {
