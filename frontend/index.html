@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProjectHub — Innovation Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-shell">
+
+    <aside class="sidebar">
+      <a class="brand" href="#">
+        
+<span class="brand-icon" aria-label="ProjectHub logo">
+  <svg viewBox="0 0 40 40" aria-hidden="true">
+    <path
+      d="M8 34V6H23C31 6 35 11 35 18S31 29 23 29H18"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M20 18L29 11M20 18L31 22"
+      fill="none"
+      stroke="#080808"
+      stroke-width="2.5"
+      stroke-linecap="round"
+    />
+    <circle cx="29" cy="11" r="3" fill="#080808"/>
+    <circle cx="31" cy="22" r="3" fill="#080808"/>
+    <circle cx="20" cy="18" r="3" fill="#080808"/>
+  </svg>
+</span>
+
+        ProjectHub<span class="brand-dot">.</span>
+      </a>
+
+      <p class="sidebar-label">WORKSPACE</p>
+      <nav class="side-nav">
+        <a class="nav-item active" href="#overview"><span>▦</span> Overview</a>
+        <a class="nav-item" href="#projects"><span>◫</span> All projects</a>
+        <a class="nav-item" href="#projects"><span>⌕</span> Explore projects</a>
+      </nav>
+
+      <p class="sidebar-label">QUICK ACCESS</p>
+      <div class="quick-links">
+        <button class="quick-link" data-category="Web Development"><span class="dot teal"></span> Web Development</button>
+        <button class="quick-link" data-category="Software Development"><span class="dot orange"></span> Software Development</button>
+        <button class="quick-link" data-category="AI / ML"><span class="dot purple"></span> AI / ML</button>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="open-source-mark">✳</div>
+        <strong>Built in the open.</strong>
+        <p>Discover ideas. Share knowledge. Build together.</p>
+        <a href="https://github.com/" target="_blank" rel="noreferrer">Explore GitHub ↗</a>
+      </div>
+    </aside>
+
+    <main class="main-area">
+     
+<header class="topbar">
+  <div class="topbar-heading">
+    <p class="breadcrumb">WORKSPACE <span>/</span> OVERVIEW</p>
+    <p class="topbar-subtitle">Student Innovation Workspace</p>
+  </div>
+
+  <div class="topbar-actions">
+    <span class="status-pill">
+      <span class="status-dot"></span>
+      Community workspace
+    </span>
+
+    <button id="openForm" class="primary-btn" type="button">
+      <span>＋</span> New project
+    </button>
+
+<div class="profile-area">
+    <button
+      class="profile-button"
+      id="profileButton"
+      type="button"
+      aria-label="Open profile"
+      title="Your profile"
+    >
+      <svg
+        class="profile-avatar"
+        viewBox="0 0 64 64"
+        role="img"
+        aria-label="Illustrated profile avatar"
+      >
+        <circle cx="32" cy="32" r="31" fill="#24170f"/>
+        <path d="M12 57 Q15 42 32 42 Q49 42 52 57" fill="#ff6a00"/>
+        <path d="M19 25 Q17 9 32 9 Q48 9 45 27 L42 38 L22 38 Z" fill="#24201e"/>
+        <ellipse cx="32" cy="29" rx="12" ry="14" fill="#dca27e"/>
+        <path d="M20 26 Q19 11 33 12 Q45 12 45 25 L40 20 L30 19 L22 26 Z" fill="#24201e"/>
+        <circle cx="27" cy="29" r="1.4" fill="#171717"/>
+        <circle cx="37" cy="29" r="1.4" fill="#171717"/>
+        <path d="M28 35 Q32 38 36 35" fill="none" stroke="#7d4030" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M24 43 L32 50 L40 43" fill="#f5f5f5"/>
+      </svg>
+      <span class="profile-chevron">⌄</span>
+       </button>
+
+    <div class="profile-menu hidden" id="profileMenu">
+      <p class="profile-name">ProjectHub Member</p>
+      <p class="profile-role">Student Innovator</p>
+      <div class="profile-menu-divider"></div>
+      <button type="button" id="profileDashboard">
+        Go to overview ↗
+      </button>
+    </div>
+  </div>
+</header>
+
+
+      <div class="dashboard-content">
+        <section class="welcome" id="overview">
+          <div>
+            <p class="eyebrow">YOUR IDEAS, ALL IN ONE PLACE</p>
+            <h1>Ideas become <span>impact.</span></h1>
+            <p class="welcome-description">Explore student innovations, share what you're building, and discover the technologies behind great ideas.</p>
+          </div>
+          <div class="welcome-art" aria-hidden="true">
+            <div class="art-orbit orbit-one"></div>
+            <div class="art-orbit orbit-two"></div>
+            <div class="art-core">P<span>.</span></div>
+            <span class="art-star star-one">✳</span>
+            <span class="art-star star-two">✦</span>
+          </div>
+        </section>
+
+        <section class="stats-grid" aria-label="Project statistics">
+          <article class="stat-card">
+            <div class="stat-top"><span>Total projects</span><span class="stat-icon teal-bg">▦</span></div>
+            <div class="stat-number" id="projectCount">0</div>
+            <p class="stat-foot"><span class="mini-indicator"></span> Community submissions</p>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top"><span>Technologies</span><span class="stat-icon purple-bg">⌘</span></div>
+            <div class="stat-number" id="technologyCount">0</div>
+            <p class="stat-foot">Tools used across projects</p>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top"><span>Categories</span><span class="stat-icon orange-bg">◈</span></div>
+            <div class="stat-number" id="categoryCount">0</div>
+            <p class="stat-foot">Areas of innovation</p>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top"><span>Open knowledge</span><span class="stat-icon blue-bg">↗</span></div>
+            <div class="stat-number">100<span class="percent">%</span></div>
+            <p class="stat-foot">Designed for sharing</p>
+          </article>
+        </section>
+
+<!-- ===== PROFILE DASHBOARD ===== -->
+<section id="profilePage" class="profile-page hidden">
+  <div class="profile-page-header">
+    <div>
+      <p class="eyebrow">YOUR WORKSPACE</p>
+      <h1>My Profile</h1>
+      <p class="section-description">
+        Track your contributions and explore your work.
+      </p>
+    </div>
+
+    <button type="button" id="backToProjects" class="secondary-btn">
+      ← Back to projects
+    </button>
+  </div>
+
+  <div class="profile-hero">
+    <div class="profile-avatar-large" aria-hidden="true">👩🏻‍💻</div>
+
+    <div class="profile-info">
+      <p class="eyebrow">PROJECTHUB MEMBER</p>
+      <h2 id="profileName">ProjectHub Member</h2>
+      <p id="profileRole">Student Innovator</p>
+      <p class="profile-bio">
+        Building ideas, learning technologies, and sharing projects
+        with the community.
+      </p>
+      
+<button type="button" id="editProfileButton" class="primary-btn">
+  ✎ Edit profile
+</button>
+
+    </div>
+
+    <span class="profile-status">
+      <span class="profile-status-dot"></span>
+      Community member
+    </span>
+  </div>
+
+  <div class="profile-stats">
+    <article class="profile-stat-card">
+      <span>Projects contributed</span>
+      <strong id="myProjectCount">0</strong>
+      <small>Your published projects</small>
+    </article>
+
+    <article class="profile-stat-card">
+      <span>Technologies used</span>
+      <strong id="myTechnologyCount">0</strong>
+      <small>Unique technologies across projects</small>
+    </article>
+
+    <article class="profile-stat-card">
+      <span>Categories explored</span>
+      <strong id="myCategoryCount">0</strong>
+      <small>Different project categories</small>
+    </article>
+  </div>
+  <!-- ===== EDIT PROFILE FORM ===== -->
+<form id="editProfileForm" class="project-form hidden">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">PERSONALIZE YOUR SPACE</p>
+      <h2>Edit your profile</h2>
+      <p class="section-description">
+        Update how you appear in the ProjectHub community.
+      </p>
+    </div>
+  </div>
+
+  <div class="form-grid">
+    <div class="form-group">
+      <label for="editDisplayName">Display name</label>
+      <input
+        type="text"
+        id="editDisplayName"
+        maxlength="50"
+        placeholder="Enter your display name"
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="editAvatar">Choose avatar</label>
+      <select id="editAvatar">
+        <option value="👩🏻‍💻">👩🏻‍💻 Developer</option>
+        <option value="👩‍🎓">👩‍🎓 Student</option>
+        <option value="🧑‍💻">🧑‍💻 Coder</option>
+        <option value="🚀">🚀 Innovator</option>
+        <option value="🎨">🎨 Creator</option>
+      </select>
+    </div>
+
+    <div class="form-group full-field">
+      <label for="editBio">Bio</label>
+      <textarea
+        id="editBio"
+        rows="4"
+        maxlength="200"
+        placeholder="Tell the community a little about yourself..."
+      ></textarea>
+    </div>
+  </div>
+
+  <p id="profileFormMessage" role="status"></p>
+
+  <div class="form-actions">
+    <button type="button" id="cancelProfileEdit" class="secondary-btn">
+      Cancel
+    </button>
+    <button type="submit" class="primary-btn">
+      Save profile
+    </button>
+  </div>
+</form>
+<!-- ===== END EDIT PROFILE FORM ===== -->
+
+<div class="profile-projects-section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">YOUR CONTRIBUTIONS</p>
+        <h2>My projects</h2>
+        <p class="section-description">
+          Projects currently available in the ProjectHub directory.
+        </p>
+      </div>
+    </div>
+
+    <div id="myProjectsGrid" class="project-grid"></div>
+
+    <p id="myProjectsEmpty" class="empty-state hidden">
+      No projects are available yet. Publish a project to get started!
+    </p>
+  </div>
+</section>
+<!-- ===== END PROFILE DASHBOARD ===== -->
+
+        <section class="projects-section" id="projects">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">DISCOVER & CREATE</p>
+              <h2>Project directory</h2>
+              <p class="section-description">A collection of ideas built by student innovators.</p>
+            </div>
+            <button id="refreshProjects" class="secondary-btn">↻ Refresh</button>
+          </div>
+
+          
+<div class="filter-panel">
+  <label class="search-box">
+    <span>⌕</span>
+    <input
+      id="search"
+      type="search"
+      placeholder="Search by project, technology or keyword..."
+      aria-label="Search projects"
+    >
+    <kbd>LIVE</kbd>
+  </label>
+
+  <select id="category" aria-label="Filter by category">
+    <option value="all">All categories</option>
+  </select>
+
+  <select id="sortBy" aria-label="Sort projects">
+    <option value="newest">Newest first</option>
+    <option value="title">Title (A–Z)</option>
+    <option value="category">Category (A–Z)</option>
+  </select>
+
+  <span class="result-count" id="resultCount">Loading...</span>
+</div>
+
+
+          <form id="projectForm" class="project-form hidden">
+            <div class="form-heading">
+              <div>
+                <p class="eyebrow">COMMUNITY CONTRIBUTION</p>
+                <h3>Submit a project</h3>
+                <p class="section-description">Share your work with fellow student innovators.</p>
+              </div>
+              <button type="button" id="cancelForm" class="close-btn" aria-label="Close form">×</button>
+            </div>
+
+            <div class="form-grid">
+              <label>Project title<input id="title" placeholder="e.g. Smart Campus" required maxlength="100"></label>
+              <label>Category<input id="categoryInput" placeholder="e.g. Web Development" required maxlength="60"></label>
+              <label class="full-field">Description<textarea id="description" placeholder="What problem does your project solve?" required maxlength="1000"></textarea></label>
+              <label class="full-field">Technologies<input id="technologies" placeholder="React, Node.js, Docker" required></label>
+              <label class="full-field">GitHub repository<input id="github" type="url" placeholder="https://github.com/username/repository" required></label>
+            </div>
+            <div class="form-footer">
+              <p id="formMessage" role="status"></p>
+              <div class="form-actions">
+                <button type="button" id="cancelFormBottom" class="secondary-btn">Cancel</button>
+                <button type="submit" class="primary-btn">Publish project ↗</button>
+              </div>
+            </div>
+          </form>
+
+          <div id="projectGrid" class="project-grid">
+            <div class="loading-state">Loading your project directory...</div>
+          </div>
+          <div id="emptyMessage" class="empty-state hidden">
+            <div class="empty-icon">⌕</div>
+            <h3>No projects found</h3>
+            <p>Try a different keyword or choose another category.</p>
+            <button id="clearFilters" class="secondary-btn">Clear filters</button>
+          </div>
+          
+<!-- Project Details Modal -->
+<div id="projectModal" class="modal-overlay hidden">
+  <div
+    class="project-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+    <button
+      type="button"
+      id="closeProjectModal"
+      class="close-btn modal-close"
+      aria-label="Close project details"
+    >×</button>
+
+    <span id="modalCategory" class="category-tag"></span>
+
+    <h2 id="modalTitle">Project title</h2>
+
+    <p id="modalDescription" class="modal-description"></p>
+
+    <div class="modal-divider"></div>
+
+    <h3>Technologies used</h3>
+    <div id="modalTechnologies" class="tags"></div>
+
+    <a
+      id="modalGithub"
+      class="card-link"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+    >Explore repository ↗</a>
+  </div>
+</div>
+
+        </section>
+
+        <footer class="footer">
+          <span>© 2026 ProjectHub · Open Source Technology Mini Project</span>
+          <span>Designed for student innovation <span class="footer-heart">✳</span></span>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
