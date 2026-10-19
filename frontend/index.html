@@ -67,6 +67,40 @@
     </aside>
 
     <main class="main-area">
+      
+<section id="authScreen" class="auth-screen hidden">
+  <div class="auth-card">
+    <h1>Welcome to ProjectHub</h1>
+    <p>Sign in to showcase your projects and manage your profile.</p>
+
+    <div class="auth-tabs">
+      <button type="button" id="showLoginButton">Login</button>
+      <button type="button" id="showRegisterButton">Create Account</button>
+    </div>
+
+    <form id="authForm">
+      <div id="authNameGroup" class="hidden">
+        <label for="authName">Your name</label>
+        <input id="authName" type="text" placeholder="Enter your name" autocomplete="name">
+      </div>
+
+      <label for="authEmail">Email</label>
+      <input id="authEmail" type="email" placeholder="you@example.com" autocomplete="email" required>
+
+      <label for="authPassword">Password</label>
+      <input id="authPassword" type="password" placeholder="At least 6 characters" minlength="6" autocomplete="current-password" required>
+
+      <button type="submit" id="authSubmitButton">Login</button>
+    </form>
+
+    <div class="auth-divider">OR</div>
+
+    <button type="button" id="googleLoginButton">Continue with Google</button>
+
+    <p id="authMessage" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
      
 <header class="topbar">
   <div class="topbar-heading">
@@ -422,6 +456,6 @@
     </main>
   </div>
 
-  <script src="app.js"></script>
-</body>
+<script type="module" src="auth.js"></script>
+<script src="app.js"></script></body>
 </html>

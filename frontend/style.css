@@ -2333,3 +2333,119 @@ svg {
   }
 }
 
+/* ProjectHub authentication screen */
+.auth-screen {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  box-sizing: border-box;
+}
+
+.auth-screen.hidden {
+  display: none;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 32px;
+  border: 1px solid #dce3ec;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+  box-sizing: border-box;
+}
+
+.auth-card h1 {
+  margin: 0 0 10px;
+  color: #172554;
+  font-size: 28px;
+}
+
+.auth-card > p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 24px 0;
+}
+
+.auth-tabs button,
+#googleLoginButton {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #dbe3ef;
+  border-radius: 9px;
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+#authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#authForm label {
+  margin-top: 8px;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#authForm input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+#authSubmitButton {
+  margin-top: 12px;
+  padding: 13px;
+  border: 0;
+  border-radius: 9px;
+  background: #1d4ed8;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#googleLoginButton {
+  width: 100%;
+  margin-top: 8px;
+  background: white;
+  color: #1e293b;
+}
+
+.auth-divider {
+  margin: 20px 0 10px;
+  color: #94a3b8;
+  text-align: center;
+  font-size: 12px;
+}
+
+#authMessage {
+  min-height: 20px;
+  overflow-wrap: anywhere;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+.auth-card button:focus-visible,
+#authForm input:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+.auth-tabs button.active {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  color: #ffffff;
+}

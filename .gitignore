@@ -20,3 +20,6 @@ Thumbs.db
 # Local backup and database test files
 backend/server-backup.js
 backend/test-db.js
+
+# Firebase Admin credentials
+/backend/firebase-service-account.json

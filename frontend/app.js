@@ -12,23 +12,28 @@ const message = document.getElementById("formMessage");
 
 let projects = [];
 
+
 async function loadProjects() {
   grid.innerHTML = '<p class="loading-state">Loading projects...</p>';
 
   try {
     const response = await fetch(API_URL);
-    if (!response.ok) throw new Error("Could not load projects");
+    if (!response.ok) {
+      throw new Error("Could not load projects");
+    }
 
     projects = await response.json();
 
     updateCategories();
     renderProjects();
+    updateProfileDashboard();
   } catch (error) {
     console.error(error);
     grid.innerHTML =
       '<p class="loading-state">Could not connect to the backend. Make sure it is running on port 5000.</p>';
   }
 }
+
 
 function updateCategories() {
   const selectedCategory = category.value;
@@ -233,17 +238,23 @@ try {
     createdBy: getSavedProfile().name
   };
 
-  const response = await fetch(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(projectWithOwner)
-  });
+ 
+const token = await window.projectHubAuth.getIdToken();
 
-  const data = await response.json();
+const response = await fetch(API_URL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${token}`
+  },
+  body: JSON.stringify(projectWithOwner)
+});
 
-  if (!response.ok) {
-    throw new Error(data.error || "Unable to add project");
-  }
+const data = await response.json();
+
+if (!response.ok) {
+  throw new Error(data.error || "Unable to add project");
+}
 
   projects.push(data);
   updateCategories();
@@ -424,11 +435,13 @@ function showProjectDirectory() {
 
 
 function updateProfileDashboard() {
-  const profile = getSavedProfile();
+  
+const user = window.projectHubAuth?.getCurrentUser();
 
-  const myProjects = projects.filter(
-    project => project.createdBy === profile.name
-  );
+const myProjects = user
+  ? projects.filter(project => project.ownerUid === user.uid)
+  : [];
+
 
   const technologySet = new Set(
     myProjects.flatMap(project => project.technologies || [])
@@ -657,19 +670,21 @@ editProfileForm?.addEventListener("submit", async (event) => {
   try {
     profileFormMessage.textContent = "Saving profile...";
 
-    const response = await fetch(
-  `${API_BASE_URL}/api/profiles/${encodeURIComponent(name)}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          bio: updatedProfile.bio,
-          avatar: updatedProfile.avatar
-        })
-      }
-    );
+    
+const token = await window.projectHubAuth.getIdToken();
+
+const response = await fetch(`${API_BASE_URL}/api/me/profile`, {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${token}`
+  },
+  body: JSON.stringify({
+    name: updatedProfile.name,
+    bio: updatedProfile.bio,
+    avatar: updatedProfile.avatar
+  })
+});
 
     const data = await response.json();
 
