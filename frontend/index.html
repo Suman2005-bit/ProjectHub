@@ -68,38 +68,99 @@
 
     <main class="main-area">
       
+
 <section id="authScreen" class="auth-screen hidden">
-  <div class="auth-card">
-    <h1>Welcome to ProjectHub</h1>
-    <p>Sign in to showcase your projects and manage your profile.</p>
+  
 
-    <div class="auth-tabs">
-      <button type="button" id="showLoginButton">Login</button>
-      <button type="button" id="showRegisterButton">Create Account</button>
-    </div>
 
-    <form id="authForm">
-      <div id="authNameGroup" class="hidden">
-        <label for="authName">Your name</label>
-        <input id="authName" type="text" placeholder="Enter your name" autocomplete="name">
+  <div class="auth-layout">
+    <div class="auth-brand">
+      <a class="auth-logo" href="#overview">
+        <span class="auth-logo-mark">P</span>
+        <span>ProjectHub<span class="auth-dot">.</span></span>
+      </a>
+
+      <div class="auth-intro">
+        <span class="auth-eyebrow">YOUR IDEAS, ALL IN ONE PLACE</span>
+        <h1>Ideas become <span>impact.</span></h1>
+        <p>
+          Join a community of student innovators. Share what
+          you're building, explore new ideas, and grow together.
+        </p>
       </div>
 
-      <label for="authEmail">Email</label>
-      <input id="authEmail" type="email" placeholder="you@example.com" autocomplete="email" required>
+      <img class="auth-hero-img" src="images/projecthub-hero.png"
+     alt="Ideas, code and teams connected around a lightbulb">
 
-      <label for="authPassword">Password</label>
-      <input id="authPassword" type="password" placeholder="At least 6 characters" minlength="6" autocomplete="current-password" required>
+    <div class="auth-card">
+      <div class="auth-card-accent"></div>
 
-      <button type="submit" id="authSubmitButton">Login</button>
-    </form>
+      <h2 id="authHeading">Welcome back.</h2>
+      <p id="authDescription">Sign in to your workspace.</p>
 
-    <div class="auth-divider">OR</div>
+      <div class="auth-tabs">
+        <button type="button" id="showLoginButton" class="active">
+          Log in
+        </button>
+        <button type="button" id="showRegisterButton">
+          Create account
+        </button>
+      </div>
 
-    <button type="button" id="googleLoginButton">Continue with Google</button>
+      <form id="authForm">
+        <div id="authNameGroup" class="hidden">
+          <label for="authName">Your name</label>
+          <input id="authName" type="text"
+            placeholder="Enter your name" autocomplete="name">
+        </div>
 
-    <p id="authMessage" role="status" aria-live="polite"></p>
+        <label for="authEmail">Email address</label>
+        <input id="authEmail" type="email"
+          placeholder="you@example.com" autocomplete="email" required>
+
+       <label for="authPassword">Password</label>
+<div class="password-wrap">
+  <input id="authPassword" type="password"
+    placeholder="Enter your password" minlength="6"
+    autocomplete="current-password" required>
+  <button type="button" id="togglePassword" class="toggle-password"
+          aria-label="Show password">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+         stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+         stroke-linejoin="round" aria-hidden="true">
+      <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20C5 20 1 12 1 12a18.5 18.5 0 0 1 5.06-5.94"/>
+      <path d="M9.9 4.24A10.9 10.9 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+      <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/>
+      <line x1="1" y1="1" x2="23" y2="23"/>
+    </svg>
+  </button>
+</div>
+      </form>
+
+      <div class="auth-divider"><span>OR CONTINUE WITH</span></div>
+
+      <button type="button" id="googleLoginButton">
+        <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
+  <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/>
+  <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/>
+  <path fill="#FBBC05" d="M10.5 28.7a14.5 14.5 0 0 1 0-9.4l-7.9-6.1a24 24 0 0 0 0 21.6l7.9-6.1z"/>
+  <path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/>
+</svg>
+        Continue with Google
+      </button>
+
+      <p id="authMessage" role="status" aria-live="polite"></p>
+
+      <p class="auth-switch">
+        New to ProjectHub?
+        <button type="button" id="authSwitchButton">
+          Create an account
+        </button>
+      </p>
+    </div>
   </div>
 </section>
+
 
      
 <header class="topbar">

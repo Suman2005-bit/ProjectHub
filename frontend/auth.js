@@ -38,6 +38,11 @@ const authMessage = document.getElementById("authMessage");
 const showLoginButton = document.getElementById("showLoginButton");
 const showRegisterButton = document.getElementById("showRegisterButton");
 const googleLoginButton = document.getElementById("googleLoginButton");
+const authHeading = document.getElementById("authHeading");
+const authDescription = document.getElementById("authDescription");
+const authSwitchText = document.getElementById("authSwitchText");
+const authSwitchButton = document.getElementById("authSwitchButton");
+const togglePassword = document.getElementById("togglePassword");
 
 function setMessage(message = "") {
   authMessage.textContent = message;
@@ -60,10 +65,20 @@ function showAuthScreen(show) {
 
 function setMode(registerMode) {
   isRegisterMode = registerMode;
+
   authNameGroup.classList.toggle("hidden", !registerMode);
   authName.required = registerMode;
   authPassword.autocomplete = registerMode ? "new-password" : "current-password";
-  authSubmitButton.textContent = registerMode ? "Create Account" : "Login";
+  authPassword.placeholder = registerMode ? "Create a password" : "Enter your password";
+
+  authHeading.textContent = registerMode ? "Join ProjectHub." : "Welcome back.";
+  authDescription.textContent = registerMode
+    ? "Create your account to start sharing projects."
+    : "Sign in to your workspace.";
+  authSubmitButton.textContent = registerMode ? "Create account" : "Log in";
+  authSwitchText.textContent = registerMode ? "Already have an account?" : "New to ProjectHub?";
+  authSwitchButton.textContent = registerMode ? "Log in" : "Create an account";
+
   showLoginButton.classList.toggle("active", !registerMode);
   showRegisterButton.classList.toggle("active", registerMode);
   setMessage();
@@ -71,6 +86,13 @@ function setMode(registerMode) {
 
 showLoginButton.addEventListener("click", () => setMode(false));
 showRegisterButton.addEventListener("click", () => setMode(true));
+authSwitchButton.addEventListener("click", () => setMode(!isRegisterMode));
+
+togglePassword?.addEventListener("click", () => {
+  const show = authPassword.type === "password";
+  authPassword.type = show ? "text" : "password";
+  togglePassword.setAttribute("aria-label", show ? "Hide password" : "Show password");
+});
 
 authForm.addEventListener("submit", async event => {
   event.preventDefault();
@@ -173,6 +195,7 @@ onAuthStateChanged(auth, user => {
 
   if (user) {
     setMessage();
+    window.updateProfileDashboard?.();
     console.log("Signed in to ProjectHub.");
   } else {
     setMode(false);
